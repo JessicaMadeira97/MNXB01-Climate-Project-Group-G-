@@ -108,33 +108,27 @@ void tempTrender::hotCold(){
 	Reader(f, year, month, day, time, temp);
 	f.close();
 		
-	TH1D* hist = new TH1D("Histogram","Hottest Temperature in a Year; Day of the year; Temperature[#circC]", 357, 0, 356);	
-
-	int RR = 430000;
-	int CC = 12;
-	
-	vector<vector<double> > matrix(RR);
-	for (size_t i = 0; i < RR; i++){
-		matrix[i].resize(CC);
-	}
-
-    double FirstYear = year.at(0);
-    double LastYear = year.at(-1);
-    int NumberOfYears = LastYear - FirstYear + 1; //This still needs to be converted to an integer
-    ofstream myfile;
-    myfile.open("LunchTempMatrix.txt");
+	//TH1D* hist = new TH1D("Histogram","Hottest Temperature in a Year; Day of the year; Temperature[#circC]", 357, 0, 356);	
+	// This is the function
+	vector< vector<double> > Data;
     
-    double Year = FirstYear; //Year we start from
-    int k = 0; // For counting through all the data
-	for (size_t i= 0;  i< NumberOfYears ; i++){ //I am not sure what size_t is and if it can be used as a matrix argument
-		int l = 0; //For counting all the days
-		while ( year.at(k) == Year && time.at(k) == 12.){ //We want to put the noon temperatures of every day in a year in one line of a matrix
-			matrix[i][l] = temp.at(k);
-			myfile << matrix[i][l] << ",";
-			k++;
-			l++;
+    ofstream myfile("LunchTempMatrix.txt");
+    if (myfile.fail()){
+		cerr<<"Could not open file.\n";
+	}
+	
+    size_t Year = year.at(0); //Year we start from
+    size_t LastYear =year.at(year.size()-1);
+	for (Year;  Year<LastYear ; Year++){
+		vector <double> Yrs;
+		for (size_t k=0; k<temp.size(); k++){
+			if (year.at(k) == Year && time.at(k) == 12.){
+			Yrs.push_back(temp.at(k));
+			myfile << temp.at(k) << ",";
+			}
 		}
-		Year++;
+		Data.push_back(Yrs);
+		myfile << "\n";
 	}
 	
 	myfile.close();
