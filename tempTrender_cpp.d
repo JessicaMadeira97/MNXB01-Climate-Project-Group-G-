@@ -33,9 +33,10 @@
 ./tempTrender_cpp.so: /usr/include/root/TVectorFfwd.h
 ./tempTrender_cpp.so: /usr/include/root/TVectorDfwd.h
 ./tempTrender_cpp.so: /usr/include/root/TFitResultPtr.h
-./tempTrender_cpp.so: /usr/include/root/TStyle.h /usr/include/root/TAttText.h
-./tempTrender_cpp.so: /usr/include/root/TMath.h /usr/include/root/TError.h
-./tempTrender_cpp.so: /usr/include/root/TCanvas.h /usr/include/root/TPad.h
+./tempTrender_cpp.so: /usr/include/root/TGraph.h /usr/include/root/TStyle.h
+./tempTrender_cpp.so: /usr/include/root/TAttText.h /usr/include/root/TMath.h
+./tempTrender_cpp.so: /usr/include/root/TError.h /usr/include/root/TCanvas.h
+./tempTrender_cpp.so: /usr/include/root/TPad.h
 ./tempTrender_cpp.so: /usr/include/root/TVirtualPad.h
 ./tempTrender_cpp.so: /usr/include/root/TAttPad.h
 ./tempTrender_cpp.so: /usr/include/root/TVirtualX.h
